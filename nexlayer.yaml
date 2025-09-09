@@ -1,0 +1,16 @@
+application:
+  name: "n8n-workflow-automation"
+  pods:
+    - name: "n8n"
+      image: "docker.n8n.io/n8nio/n8n:latest"
+      path: "/"
+      servicePorts: [5678]
+      vars:
+        NODE_ENV: "production"
+        N8N_DIAGNOSTICS_ENABLED: "false"
+        N8N_USER_FOLDER: "/home/node/.n8n"
+        WEBHOOK_URL: "<% URL %>"
+      volumes:
+        - name: "n8n-data"
+          size: "1Gi"
+          mountPath: "/home/node/.n8n"
